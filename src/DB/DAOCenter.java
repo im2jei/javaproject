@@ -41,7 +41,7 @@ public class DAOCenter implements DAOInterface {
 
 	private void connect() {
 		try {
-			conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:ooo", "system", "11111111");
+			conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:oracle", "system", "1111");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -50,20 +50,26 @@ public class DAOCenter implements DAOInterface {
 	}
 
 	public void whichone(Object objectMember, String m) {
-
-		
-		switch (m) {
-
-		case "member":
-			
-			break;
-		case "goods":
-			break;
-		case "cart":
-			break;
-		case "order":
-			break;
+		System.out.println("À£ÄÄ daocenter");
+		String mm = String.valueOf(m);
+		if (mm.equals("join")) {
+			MemberDAO dao = MemberDAO.getInstance();
+			dao.InsertMember(objectMember);
+			System.out.println("sending to dao");
 		}
+
+//		switch (m) {
+//
+//		case "member":
+//			
+//			break;
+//		case "goods":
+//			break;
+//		case "cart":
+//			break;
+//		case "order":
+//			break;
+//		}
 
 	}
 
@@ -78,8 +84,6 @@ public class DAOCenter implements DAOInterface {
 //			member.setAdr(check[3]);
 //			member.setCell(check[4]);
 //		}
-		MemberDAO dao = MemberDAO.getInstance();
-		dao.InsertMember(DTO);
 		return true;
 	}
 

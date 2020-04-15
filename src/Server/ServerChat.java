@@ -44,6 +44,9 @@ public class ServerChat extends Thread {
 						
 						String msg = new String(reBuffer);
 						msg = msg.trim();
+						if(msg.contains("join")) {
+							
+						}
 						System.out.println("구별자 왔는지 확인 : "+msg);
 						
 						ByteArrayInputStream bais = new ByteArrayInputStream(reBuffer);

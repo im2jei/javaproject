@@ -18,7 +18,7 @@ public class ClientChat {
 	ClientChat(Socket withServer) {
 		this.withServer = withServer;
 		start();
-		streamSet(chk,nnn);
+		streamSet(chk, nnn);
 		// new Login();
 		// send();
 	}
@@ -74,17 +74,21 @@ public class ClientChat {
 	public void streamSet(String[] check, String mm) {
 		try {
 			if (check != null) {
+				System.out.println(mm);
 				ByteArrayOutputStream baos = new ByteArrayOutputStream();
 				ObjectOutputStream oos = new ObjectOutputStream(baos);
 				oos.writeObject(check);
-				
+				mm=String.valueOf(mm);
+				if(mm.equals("join")) {
+					System.out.println("회원가입할거다");
+				}
 
 				byte[] bowl = baos.toByteArray();
 
 				sendMsg = withServer.getOutputStream();
 
 				sendMsg.write(bowl);
-				sendMsg.write(mm.getBytes());
+
 				System.out.println("보내기 완료");
 			}
 

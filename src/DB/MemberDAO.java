@@ -1,10 +1,12 @@
 package DB;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+
 public class MemberDAO {
 
 	private Connection conn;
@@ -47,16 +49,17 @@ public class MemberDAO {
 
 	public boolean InsertMember(Object oj) {
 		boolean result = false;
-		String[] check = (String[]) oj;
-		member = new MemberDTO();
-		for (int i = 0; i < check.length; i++) {
-			member.setId(check[0]);
-			member.setName(check[1]);
-			member.setPwd(check[2]);
-			member.setAdr(check[3]);
-			member.setCell(check[4]);
-		}
 		if (connect()) {
+			System.out.println("working dao");
+			String[] check = (String[]) oj;
+			member = new MemberDTO();
+			for (int i = 0; i < check.length; i++) {
+				member.setId(check[0]);
+				member.setName(check[1]);
+				member.setPwd(check[2]);
+				member.setAdr(check[3]);
+				member.setCell(check[4]);
+			}
 			try {
 				String sql = "insert into member values(?,?,?,?,?,1)";
 				PreparedStatement psmt = conn.prepareStatement(sql);
@@ -83,4 +86,5 @@ public class MemberDAO {
 
 		return result;
 	}
+
 }
